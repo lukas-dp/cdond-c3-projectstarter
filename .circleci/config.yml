@@ -40,6 +40,7 @@ jobs:
       - checkout
       - restore_cache:
           keys: [frontend-build]
+      - run: exit 1
       - run:
           name: Build front-end
           command: |
