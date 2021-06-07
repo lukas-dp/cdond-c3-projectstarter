@@ -41,16 +41,16 @@ For your submission, please submit the following:
   1. Provide a screenshot of a graph of your EC2 instance including available memory, available disk space, and CPU usage. [SCREENSHOT11]
   1. Provide a screenshot of an alert that was sent by Prometheus. [SCREENSHOT12]
 
-- Your presentation should be in PDF format named "presentation.pdf" and should be included in your code repository root folder. 
+- Your presentation should be in PDF format named "presentation.pdf" and should be included in your code repository root folder.
 
-Before you submit your project, please check your work against the project rubric. If you haven’t satisfied each criterion in the rubric, then revise your work so that you have met all the requirements. 
+Before you submit your project, please check your work against the project rubric. If you haven’t satisfied each criterion in the rubric, then revise your work so that you have met all the requirements.
 
 ### Built With
 
 - [Circle CI](www.circleci.com) - Cloud-based CI/CD service
 - [Amazon AWS](https://aws.amazon.com/) - Cloud services
 - [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS
-- [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastrcuture as code
+- [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastructure as code
 - [Ansible](https://www.ansible.com/) - Configuration management tool
 - [Prometheus](https://prometheus.io/) - Monitoring tool
 
