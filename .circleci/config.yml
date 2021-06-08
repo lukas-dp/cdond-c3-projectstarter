@@ -232,7 +232,7 @@ jobs:
           name: Run migrations
           command: |
             cd backend
-            pwd
+            echo "pwd"
             npm run migrations > migration.output
       - persist_to_workspace:
           root: ~/

@@ -40,6 +40,6 @@
   #   - TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts
   #   - TYPEORM_HOST=udapeople-prod.cwvhgsfozke7.us-east-2.rds.amazonaws.com
   #   - TYPEORM_PORT=5432
-  #   - TYPEORM_USERNAME=udapeople-prod
+  #   - TYPEORM_USERNAME=postgres
   #   - TYPEORM_PASSWORD=udapeople1234
   #   - TYPEORM_DATABASE=udapeople-prod
