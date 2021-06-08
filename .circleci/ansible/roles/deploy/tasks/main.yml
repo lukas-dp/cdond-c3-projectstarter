@@ -9,11 +9,11 @@
   #     dest: "~/web/"
   #     recursive: yes
 
-- name: copy node_modules
-  synchronize:
-    src: "../../backend/node_modules"
-    dest: "~/web"
-    recursive: yes
+  - name: copy node_modules
+    synchronize:
+      src: "../../backend/node_modules"
+      dest: "~/web"
+      recursive: yes
 
   - name: Executing node
     command: pm2 start -f ./main.js
