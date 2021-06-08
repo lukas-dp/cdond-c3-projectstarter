@@ -285,12 +285,12 @@ jobs:
           command: |
             aws s3 sync . s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}/ --recursive --acl public-read
 
-      - destroy_environment:
-          workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
-          event: on_fail
-      - revert_migrations:
-          workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
-          event: on_fail
+      # - destroy_environment:
+      #     workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
+      #     event: on_fail
+      # - revert_migrations:
+      #     workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
+      #     event: on_fail
 
 
   deploy-backend:
