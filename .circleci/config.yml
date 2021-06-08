@@ -164,6 +164,7 @@ jobs:
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:Project,Values=udapeople" \
               --output text >> .circleci/ansible/inventory.txt
+              cat .circleci/ansible/inventory.txt
 
       - persist_to_workspace:
           root: ~/
@@ -201,7 +202,8 @@ jobs:
       - run:
           name: Configure server
           command: |
-            ansible-playbook -i ~/inventory.txt .circleci/ansible/configure-server.yml
+            cat .circleci/ansible/inventory.txt
+            ansible-playbook -i inventory.txt .circleci/ansible/configure-server.yml
           # apk add --no-cache openssh-client && ssh-keyscan 3.143.116.91 > ~/.ssh/known_hosts
 
       - destroy_environment:
@@ -298,7 +300,7 @@ jobs:
       - run:
           name: Deploy backend
           command: |
-            ansible-playbook -i ~/inventory.txt ~/deploy-backend.yml
+            ansible-playbook -i inventory.txt deploy-backend.yml
       - run:
           name: Deploy Prometheus node exporter
           working_directory: .circleci/ansible
