@@ -55,6 +55,7 @@ jobs:
             cd frontend
             npm i
             npm run build
+            echo `ls`
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build-{{ checksum "config.yml"}}
