@@ -202,8 +202,8 @@ jobs:
       - run:
           name: Configure server
           command: |
-          # apk add --no-cache openssh-client && ssh-keyscan 3.143.116.91 > ~/.ssh/known_hosts
             ansible-playbook -i ~/inventory.txt ~/configure-server.yml
+          # apk add --no-cache openssh-client && ssh-keyscan 3.143.116.91 > ~/.ssh/known_hosts
 
       - destroy_environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
