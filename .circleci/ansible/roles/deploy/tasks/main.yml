@@ -3,11 +3,17 @@
       path: ~/web
       state: directory
 
-  - name: Copy compiled files in dist to backend
-    synchronize:
-      src: "../../backend/"
-      dest: "~/web/"
-      recursive: yes
+  # - name: Copy compiled files in dist to backend
+  #   synchronize:
+  #     src: "../../backend/"
+  #     dest: "~/web/"
+  #     recursive: yes
+
+- name: copy node_modules
+  synchronize:
+    src: "../../backend/node_modules"
+    dest: "~/web"
+    recursive: yes
 
   - name: Executing node
     command: pm2 start -f ./main.js
