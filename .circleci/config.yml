@@ -296,7 +296,7 @@ jobs:
           command: |
             ansible-playbook -i ~/inventory.txt ~/deploy-backend.yml
       - run:
-          name: Prometheus: deploy node exporter
+          name: Deploy Prometheus node exporter
           working_directory: .circleci/ansible
           command: |
             ansible-playbook -i inventory.txt prometheus-monitoring.yml
