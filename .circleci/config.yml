@@ -48,7 +48,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - frontend-build-{{ checksum "project.clj"}}
+            - frontend-build-{{ checksum "config.yml"}}
       - run:
           name: Build front-end
           command: |
@@ -57,7 +57,7 @@ jobs:
             npm run build
       - save_cache:
           paths: [frontend/node_modules]
-          key: frontend-build-{{ checksum "project.clj"}}
+          key: frontend-build-{{ checksum "config.yml"}}
 
   build-backend:
     docker:
@@ -66,7 +66,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - backend-build-{{ checksum "project.clj"}}
+            - backend-build-{{ checksum "config.yml"}}
       - run:
           name: Back-end build
           command: |
@@ -75,7 +75,7 @@ jobs:
             npm run build
       - save_cache:
           paths: [backend/node_modules]
-          key: backend-build-{{ checksum "project.clj"}}
+          key: backend-build-{{ checksum "config.yml"}}
 
   test-frontend:
     docker:
@@ -84,7 +84,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - frontend-build-{{ checksum "project.clj"}}
+            - frontend-build-{{ checksum "config.yml"}}
       - run:
           name: Front-end test
           command: |
@@ -99,7 +99,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - backend-build-{{ checksum "project.clj"}}
+            - backend-build-{{ checksum "config.yml"}}
       - run:
           name: Back-end test
           command: |
@@ -114,7 +114,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - frontend-build-{{ checksum "project.clj"}}
+            - frontend-build-{{ checksum "config.yml"}}
       - run:
           name: Frontend-end scan
           command: |
@@ -130,7 +130,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - backend-build-{{ checksum "project.clj"}}
+            - backend-build-{{ checksum "config.yml"}}
       - run:
           name: Back-end scan
           command: |
@@ -225,7 +225,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - backend-build-{{ checksum "project.clj"}}
+            - backend-build-{{ checksum "config.yml"}}
       - run:
           name: Run migrations
           command: |
@@ -261,7 +261,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - frontend-build-{{ checksum "project.clj"}}
+            - frontend-build-{{ checksum "config.yml"}}
       - run:
           name: Install dependencies
           command: |
