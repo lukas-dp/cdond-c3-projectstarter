@@ -203,7 +203,7 @@ jobs:
           name: Configure server
           command: |
             echo `cat .circleci/ansible/inventory.txt`
-            ansible-playbook -i inventory.txt .circleci/ansible/configure-server.yml
+            ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/configure-server.yml
           # apk add --no-cache openssh-client && ssh-keyscan 3.143.116.91 > ~/.ssh/known_hosts
 
       - destroy_environment:
@@ -300,12 +300,11 @@ jobs:
       - run:
           name: Deploy backend
           command: |
-            ansible-playbook -i inventory.txt deploy-backend.yml
+            ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/deploy-backend.yml
       - run:
           name: Deploy Prometheus node exporter
-          working_directory: .circleci/ansible
           command: |
-            ansible-playbook -i inventory.txt prometheus-monitoring.yml
+            ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/prometheus-monitoring.yml
 
       - destroy_environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
