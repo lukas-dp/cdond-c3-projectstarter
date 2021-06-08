@@ -169,7 +169,6 @@ jobs:
           root: ~/
           paths:
             - project/.circleci/ansible/inventory.txt
-            - project/.circleci/ansible/configure-server.yml
 
       - run:
           name: Save URL to MemStash
@@ -202,7 +201,7 @@ jobs:
       - run:
           name: Configure server
           command: |
-            ansible-playbook -i ~/inventory.txt ~/configure-server.yml
+            ansible-playbook -i ~/inventory.txt .circleci/ansible/configure-server.yml
           # apk add --no-cache openssh-client && ssh-keyscan 3.143.116.91 > ~/.ssh/known_hosts
 
       - destroy_environment:
@@ -221,8 +220,13 @@ jobs:
       - run:
           name: Run migrations
           command: |
-            # Your code here
-            exit 1
+            cd backend
+            pwd
+            npm run migrations > migration.output
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/backend
       - run:
           name: Send migration results to memstash
           command: |
