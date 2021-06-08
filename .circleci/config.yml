@@ -47,7 +47,8 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build-{{ checksum "project.clj"}}]
+          keys:
+            - frontend-build-{{ checksum "project.clj"}}
       - run:
           name: Build front-end
           command: |
@@ -64,7 +65,8 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build-{{ checksum "project.clj"}}]
+          keys:
+            - backend-build-{{ checksum "project.clj"}}
       - run:
           name: Back-end build
           command: |
@@ -81,7 +83,8 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build-{{ checksum "project.clj"}}]
+          keys:
+            - frontend-build-{{ checksum "project.clj"}}
       - run:
           name: Front-end test
           command: |
@@ -95,7 +98,8 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build-{{ checksum "project.clj"}}]
+          keys:
+            - backend-build-{{ checksum "project.clj"}}
       - run:
           name: Back-end test
           command: |
@@ -109,7 +113,8 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build-{{ checksum "project.clj"}}]
+          keys:
+            - frontend-build-{{ checksum "project.clj"}}
       - run:
           name: Frontend-end scan
           command: |
@@ -124,7 +129,8 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build-{{ checksum "project.clj"}}]
+          keys:
+            - backend-build-{{ checksum "project.clj"}}
       - run:
           name: Back-end scan
           command: |
@@ -218,7 +224,8 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build-{{ checksum "project.clj"}}]
+          keys:
+            - backend-build-{{ checksum "project.clj"}}
       - run:
           name: Run migrations
           command: |
@@ -253,7 +260,8 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build-{{ checksum "project.clj"}}]
+          keys:
+            - frontend-build-{{ checksum "project.clj"}}
       - run:
           name: Install dependencies
           command: |
