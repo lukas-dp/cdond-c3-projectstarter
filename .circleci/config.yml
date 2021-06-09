@@ -314,10 +314,12 @@ jobs:
       - run:
           name: Deploy backend
           command: |
+            ssh -o "StrictHostKeyChecking no" fenrir
             ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/deploy-backend.yml
       - run:
           name: Deploy Prometheus node exporter
           command: |
+            ssh -o "StrictHostKeyChecking no" fenrir
             ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/prometheus-monitoring.yml
 
       - destroy_environment:
