@@ -403,7 +403,7 @@ jobs:
       - run:
           name: Store old workflow ID
           command: |
-            OldWorkflowID=$(aws cloudformation \
+            export OldWorkflowID=$(aws cloudformation \
               list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
               --no-paginate --output text)
             curl -H "Content-Type: text/plain" -H "token: bf0a3403-4a22-4be5-a496-a3f9ac539961" --request PUT --data "${OldWorkflowID}" https://api.memstash.io/values/oldworkflow
