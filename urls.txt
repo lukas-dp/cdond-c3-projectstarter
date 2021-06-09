@@ -1,4 +1,4 @@
-URL01 [GitHub Repo]: https://github.com/lukas-dp/cdond-c3-projectstarter/
+URL01 [GitHub Repo]: https://github.com/lukas-dp/cdond-c3-projectstarter/tree/cicd-project
 
 URL02 [S3 Bucket]: http://udapeople-b9f82cc.s3.us-east-2.amazonaws.com/index.html#/employees
 
