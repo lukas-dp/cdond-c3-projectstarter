@@ -35,7 +35,7 @@ commands:
             export SUCCESS=`curl -H "token: 4cc6e040-fba2-4b87-abe1-725d45b81e4e" --request GET https://api.memstash.io/values/migration_<<parameters.workflow_id>>`
             if(( $SUCCESS==1 ));
             then
-             cd ~/project/backend
+             cd backend
              npm install
              npm run migrations:revert
             fi
@@ -351,7 +351,7 @@ jobs:
       - run:
           name: Backend smoke test.
           command: |
-            export BACKEND_IP='curl -H "token: bf0a3403-4a22-4be5-a496-a3f9ac539961" --request GET https://api.memstash.io/values/url'
+            export BACKEND_IP=`curl -H "token: bf0a3403-4a22-4be5-a496-a3f9ac539961" --request GET https://api.memstash.io/values/url`
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
             curl ${API_URL}/api/status
@@ -360,7 +360,7 @@ jobs:
           command: |
             URL="http://udapeople-${CIRCLE_WORKFLOW_ID}.s3-website-us-east-2.amazonaws.com"
             echo "${URL}"
-            if curl -s ${API_URL} | grep "Welcome";
+            if curl -s ${URL} | grep "Welcome";
             then
               return 0
             else
