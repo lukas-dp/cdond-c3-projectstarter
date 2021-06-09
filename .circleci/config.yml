@@ -281,6 +281,9 @@ jobs:
       - run:
           name: Deploy frontend objects
           command: |
+            export BACKEND_IP=`curl -H "token: bf0a3403-4a22-4be5-a496-a3f9ac539961" --request GET https://api.memstash.io/values/url`
+            export API_URL="http://${BACKEND_IP}:3030"
+            echo "${API_URL}"
             cd frontend
             npm run build
             ls -l
@@ -349,16 +352,9 @@ jobs:
           command: |
             yum install -y tar gzip
       - run:
-          name: Backend smoke test.
-          command: |
-            export BACKEND_IP=`curl -H "token: bf0a3403-4a22-4be5-a496-a3f9ac539961" --request GET https://api.memstash.io/values/url`
-            export API_URL="http://${BACKEND_IP}:3030"
-            echo "${API_URL}"
-            curl ${API_URL}/api/status
-      - run:
           name: Frontend smoke test.
           command: |
-            URL="http://udapeople-${CIRCLE_WORKFLOW_ID}.s3-website-us-east-2.amazonaws.com"
+            URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-east-2.amazonaws.com"
             echo "${URL}"
             if curl -s ${URL} | grep "Welcome";
             then
@@ -366,6 +362,13 @@ jobs:
             else
               return 1
             fi
+        - run:
+            name: Backend smoke test.
+            command: |
+              export BACKEND_IP=`curl -H "token: bf0a3403-4a22-4be5-a496-a3f9ac539961" --request GET https://api.memstash.io/values/url`
+              export API_URL="http://${BACKEND_IP}:3030"
+              echo "${API_URL}"
+              curl ${API_URL}/api/status
 
       - destroy_environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
