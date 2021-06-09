@@ -368,13 +368,13 @@ jobs:
             URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3.us-east-2.amazonaws.com/index.html"
             echo "${URL}"
             curl -s ${URL} | grep "Welcome"
-      # - run:
-      #     name: Backend smoke test.
-      #     command: |
-      #       export BACKEND_IP=`curl -H "token: bf0a3403-4a22-4be5-a496-a3f9ac539961" --request GET https://api.memstash.io/values/url`
-      #       export API_URL="http://${BACKEND_IP}:3030"
-      #       echo "URL: ${API_URL}"
-      #       curl ${API_URL}/api/status
+      - run:
+          name: Backend smoke test.
+          command: |
+            export BACKEND_IP=`curl -H "token: bf0a3403-4a22-4be5-a496-a3f9ac539961" --request GET https://api.memstash.io/values/url`
+            export API_URL="http://${BACKEND_IP}:3030"
+            echo "URL: ${API_URL}"
+            curl ${API_URL}/api/status
 
       # - destroy_environment:
       #     workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
