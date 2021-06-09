@@ -24,7 +24,3 @@
     TYPEORM_USERNAME: "{{ lookup('env', 'TYPEORM_USERNAME') }}"
     TYPEORM_PASSWORD: "{{ lookup('env', 'TYPEORM_PASSWORD') }}"
     TYPEORM_DATABASE: "{{ lookup('env', 'TYPEORM_DATABASE') }}"
-    # # further variables
-    # TYPEORM_MIGRATIONS_DIR: "./migrations"
-    # TYPEORM_MIGRATIONS: "./migrations/*.js"
-    # TYPEORM_ENTITIES: "./modules/domain/**/*.entity.js"
