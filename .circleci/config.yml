@@ -352,14 +352,14 @@ jobs:
           name: Backend smoke test.
           command: |
             export BACKEND_IP='curl -H "token: bf0a3403-4a22-4be5-a496-a3f9ac539961" --request GET https://api.memstash.io/values/url'
-            export URL="http://${BACKEND_IP}:3000"
-            echo "${URL}"
-            curl ${URL}/api/status
+            export API_URL="http://${BACKEND_IP}:3030"
+            echo "${API_URL}"
+            curl ${API_URL}/api/status
       - run:
           name: Frontend smoke test.
           command: |
             URL="http://udapeople-${CIRCLE_WORKFLOW_ID}.s3-website-us-east-2.amazonaws.com"
-            if curl -s --head ${URL} | grep "Welcome"
+            if curl -s ${API_URL} | grep "Welcome"
             then
               return 0
             else
