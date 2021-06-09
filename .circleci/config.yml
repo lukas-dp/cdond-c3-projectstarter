@@ -242,6 +242,7 @@ jobs:
             cd backend
             pwd
             npm i
+            npm fund
             npm run migrations > migration.output
       - persist_to_workspace:
           root: ~/
