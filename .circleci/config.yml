@@ -225,6 +225,14 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
+      - run:
+          name: Install AWS CLI
+          command: |
+            sudo apt-get update && sudo apt-get install -yy less
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
+            aws --version
       - restore_cache:
           keys:
             - backend-build-{{ checksum ".circleci/config.yml"}}
@@ -241,6 +249,7 @@ jobs:
       - run:
           name: Send migration results to memstash
           command: |
+            echo `cat backend/migration.output`
             if grep -q "has been executed successfully" backend/migration.output; then
               echo "Migration worked, saving into memstash..."
               curl -H "Content-Type: text/plain" -H "token: 4cc6e040-fba2-4b87-abe1-725d45b81e4e" --request PUT --data "1" https://api.memstash.io/values/migration_${CIRCLE_WORKFLOW_ID}
@@ -354,7 +363,7 @@ jobs:
       - run:
           name: Frontend smoke test.
           command: |
-            URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3.us-east-2.amazonaws.com"
+            URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3.us-east-2.amazonaws.com/index.html"
             echo "${URL}"
             curl -s ${URL} | grep "Welcome"
       - run:
