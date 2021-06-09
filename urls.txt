@@ -1,11 +1,11 @@
 URL01 [GitHub Repo]: https://github.com/lukas-dp/cdond-c3-projectstarter/tree/cicd-project
 
-URL02 [S3 Bucket]: https://udapeople-d751084.s3.us-east-2.amazonaws.com/index.html
+URL02 [S3 Bucket]: https://udapeople-7a59c71.s3.us-east-2.amazonaws.com/index.html
 
 URL03 [CloudFront distribution production]: d2l6d7ewzbj891.cloudfront.net
 
-URL04 [EC2 Server]: ec2-18-117-187-29.us-east-2.compute.amazonaws.com
+URL04 [EC2 Server]: ec2-3-128-202-185.us-east-2.compute.amazonaws.com
 
-URL05 [Prometheus]: http://ec2-3-139-77-236.us-east-2.compute.amazonaws.com:9090/graph
+URL05 [Prometheus]: http://ec2-3-143-211-191.us-east-2.compute.amazonaws.com:9090/graph
 
 
