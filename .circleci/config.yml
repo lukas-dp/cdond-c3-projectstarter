@@ -310,7 +310,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update ansible rsync ssh
+            apk add --update ansible rsync openssh
       - run:
           name: Deploy backend
           command: |
@@ -336,13 +336,13 @@ jobs:
 
   smoke-test:
     docker:
-      - image: alpine:latest
+      - image: amazon/aws-cli
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: |
-            apk add --update curl
+            yum install -y tar gzip curl
       - run:
           name: Get backend url
           command: |
