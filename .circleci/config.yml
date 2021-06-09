@@ -349,19 +349,12 @@ jobs:
           command: |
             yum install -y tar gzip curl
       - run:
-          name: Get backend url
+          name: Backend smoke test.
           command: |
             export BACKEND_IP='curl -H "token: bf0a3403-4a22-4be5-a496-a3f9ac539961" --request GET https://api.memstash.io/values/url'
             export URL="http://${BACKEND_IP}:3000"
-      - run:
-          name: Backend smoke test.
-          command: |
-            if curl -s --head ${URL}
-            then
-              return 0
-            else
-              return 1
-            fi
+            echo "${URL}"
+            curl ${URL}/api/status
       - run:
           name: Frontend smoke test.
           command: |
@@ -380,7 +373,12 @@ jobs:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
           event: on_fail
 
-
+      # if curl -s --head ${URL}
+      # then
+      #   return 0
+      # else
+      #   return 1
+      # fi
 
 
   cloudfront-update:
