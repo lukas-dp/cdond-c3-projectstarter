@@ -243,7 +243,7 @@ jobs:
             pwd
             npm i
             npm fund
-            npm run migrations > migration.output
+            npm run migrations > migrations.txt
       - persist_to_workspace:
           root: ~/
           paths:
@@ -251,8 +251,8 @@ jobs:
       - run:
           name: Send migration results to memstash
           command: |
-            echo `cat backend/migration.output`
-            if grep -q "has been executed successfully" backend/migration.output; then
+            echo `cat backend/migrations.txt`
+            if grep -q "has been executed successfully" backend/migrations.txt; then
               echo "Migration worked, saving into memstash..."
               curl -H "Content-Type: text/plain" -H "token: 4cc6e040-fba2-4b87-abe1-725d45b81e4e" --request PUT --data "1" https://api.memstash.io/values/migration_${CIRCLE_WORKFLOW_ID}
             else
