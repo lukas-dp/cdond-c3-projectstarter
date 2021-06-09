@@ -308,7 +308,6 @@ jobs:
           at: ~/
       - run: apt update -y && apt install -y ansible rsync unzip less
       - run:
-      - run:
           name: Install dependencies
           command: |
             apk add --update ansible
