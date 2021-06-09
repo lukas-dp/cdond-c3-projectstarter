@@ -309,7 +309,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apt update -y
+            sudo apt-get update && sudo apt-get install -yy less
             apk add --update ansible
       - run:
           name: Deploy backend
