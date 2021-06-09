@@ -365,7 +365,7 @@ jobs:
       - run:
           name: Frontend smoke test.
           command: |
-            URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3.us-east-2.amazonaws.com/index.html"
+            URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3.us-east-2.amazonaws.com/index.htmll"
             echo "${URL}"
             curl -s ${URL} | grep "Welcome"
       - run:
@@ -376,19 +376,12 @@ jobs:
             echo "URL: ${API_URL}"
             curl ${API_URL}/api/status
 
-      # - destroy_environment:
-      #     workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
-      #     event: on_fail
-      # - revert_migrations:
-      #     workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
-      #     event: on_fail
-
-      # if curl -s ${URL} | grep "Welcome";
-      # then
-      #   exit 0
-      # else
-      #   exit 1
-      # fi
+      - destroy_environment:
+          workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
+          event: on_fail
+      - revert_migrations:
+          workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
+          event: on_fail
 
 
   cloudfront-update:
