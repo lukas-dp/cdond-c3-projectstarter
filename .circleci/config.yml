@@ -306,7 +306,6 @@ jobs:
           fingerprints: ["3e:ee:c3:48:cb:aa:5b:a9:94:52:71:9a:73:f3:f9:1a"]
       - attach_workspace:
           at: ~/
-      # - run: apt update -y && apt install -y ansible rsync unzip less
       - run:
           name: Install dependencies
           command: |
@@ -315,14 +314,16 @@ jobs:
           name: Deploy backend
           working_directory: .circleci/ansible
           command: |
-          # ssh -o "StrictHostKeyChecking no" fenrir
+
             ansible-playbook -i inventory.txt deploy-backend.yml
       - run:
           name: Deploy Prometheus node exporter
           working_directory: .circleci/ansible
           command: |
-          # ssh -o "StrictHostKeyChecking no" fenrir
             ansible-playbook -i inventory.txt prometheus-monitoring.yml
+
+      # ssh -o "StrictHostKeyChecking no"
+      # - run: apt update -y && apt install -y ansible rsync unzip less
 
       - destroy_environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
