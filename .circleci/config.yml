@@ -299,18 +299,14 @@ jobs:
 
   deploy-backend:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: python:3.7
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints: ["3e:ee:c3:48:cb:aa:5b:a9:94:52:71:9a:73:f3:f9:1a"]
       - attach_workspace:
           at: ~/
-      - run:
-          name: Install dependencies
-          command: |
-            sudo apt-get update && sudo apt-get install -yy less
-            apk add --update ansible
+      - run: apt update -y && apt install -y ansible rsync unzip less
       - run:
           name: Deploy backend
           command: |
@@ -327,7 +323,11 @@ jobs:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
           event: on_fail
 
-
+      # - run:
+      #     name: Install dependencies
+      #     command: |
+      #       sudo apt-get update && sudo apt-get install -yy less
+      #       apk add --update ansible
 
 
   smoke-test:
