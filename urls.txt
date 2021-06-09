@@ -1,0 +1,11 @@
+URL01 [GitHub Repo]: https://github.com/lukas-dp/cdond-c3-projectstarter/
+
+URL02 [S3 Bucket]: http://udapeople-b9f82cc.s3.us-east-2.amazonaws.com/index.html#/employees
+
+URL03 [CloudFront distribution production]: https://us-east-2.console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/stackinfo?stackId=arn%3Aaws%3Acloudformation%3Aus-east-2%3A544501796969%3Astack%2Fudapeople-cloudfront-production%2Ff20d7ec0-c941-11eb-8b6a-02ea81611bbc&filteringStatus=active&filteringText=&viewNested=true&hideStacks=false
+
+URL04 [EC2 Server]: ec2-3-16-26-211.us-east-2.compute.amazonaws.com
+
+URL05 [Prometheus]: http://ec2-3-19-74-228.us-east-2.compute.amazonaws.com:9090/graph
+
+
