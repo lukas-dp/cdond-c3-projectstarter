@@ -310,7 +310,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update ansible rsync
+            apk add --update ansible rsync ssh
       - run:
           name: Deploy backend
           command: |
