@@ -306,11 +306,11 @@ jobs:
           fingerprints: ["3e:ee:c3:48:cb:aa:5b:a9:94:52:71:9a:73:f3:f9:1a"]
       - attach_workspace:
           at: ~/
-      - run: apt update -y && apt install -y ansible rsync unzip less
+      # - run: apt update -y && apt install -y ansible rsync unzip less
       - run:
           name: Install dependencies
           command: |
-            apk add --update ansible
+            apk add --update ansible rsync
       - run:
           name: Deploy backend
           command: |
